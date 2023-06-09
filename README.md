@@ -5,17 +5,10 @@ Published by Cyberbarbie
 An automated Bash script that performs reconnaissance 
 
 # Required Dependencies 
-1. Make sure Golang is installed on your system
-2. `sudo apt-get install assetfinder`
-3. `sudo apt-get install amass`
-4. `go install github.com/tomnomnom/httprobe@latest`
-5. `go install github.com/sensepost/gowitness@latest`
-6. Add the following lines to the end of the zhrc/bashrc/etc shell configuration file:
-  `export GOPATH=$HOME/go`
-  `export PATH=$(go env GOPATH)/bin`
-7. Add the tool directory to your environment path
+- Golang
+- httprobe `go install github.com/tomnomnom/httprobe@latest`
+- Gowitness  `go install github.com/sensepost/gowitness@latest
   
-
 # Usage 
 `autorecon.sh [target]`
 Example: `autorecon.sh tesla.com`
