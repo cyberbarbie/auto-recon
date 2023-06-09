@@ -2,7 +2,7 @@
 
 
 Published by Cyberbarbie
-An automated Bash script that performs reconnaissance 
+An automated Bash script that performs reconnaissance on a web app target. It performs subdomain enumeration, checks if the findings are valid and alive and screenshots each subdomain. Everything is stored in a directory it creates specifically for your target.
 
 # Required Dependencies 
 - Golang
