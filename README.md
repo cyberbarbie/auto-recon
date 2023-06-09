@@ -11,4 +11,5 @@ An automated Bash script that performs reconnaissance on a web app target. It pe
   
 # Usage 
 `autorecon.sh [target]`
+
 Example: `autorecon.sh tesla.com`
