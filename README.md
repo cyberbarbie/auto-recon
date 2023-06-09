@@ -12,7 +12,7 @@ An automated Bash script that performs reconnaissance
 5. `go install github.com/sensepost/gowitness@latest`
 6. Add the following lines to the end of the zhrc/bashrc/etc shell configuration file:
   `export GOPATH=$HOME/go`
-  `export PATH=$(go env GOPATH)/bin
+  `export PATH=$(go env GOPATH)/bin`
 7. Add the tool directory to your environment path
   
 
