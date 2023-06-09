@@ -7,7 +7,7 @@ An automated Bash script that performs reconnaissance on a web app target. It pe
 # Required Dependencies 
 - Golang
 - httprobe `go install github.com/tomnomnom/httprobe@latest`
-- Gowitness  `go install github.com/sensepost/gowitness@latest
+- Gowitness  `go install github.com/sensepost/gowitness@latest`
   
 # Usage 
 `autorecon.sh [target]`
