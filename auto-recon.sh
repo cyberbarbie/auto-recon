@@ -5,7 +5,7 @@
 
 # This function allow you to print the banner
 function print_banner(){
-	figlet -c -f ansishadow -t "Auto-recon.sh" | lolcat
+	figlet -c -f ansi-shadow -t "Auto-recon.sh" | lolcat
 	echo "Finding subdomains, open ports and services and directories of interest"
 }
 
@@ -123,7 +123,9 @@ function run_amass(){
 # crt.sh run function
 function run_crtsh(){
 	echo "[+] Querying cert.sh for subdomains..."
-	curl -s "https://crt.sh/?q=%25.$url&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u >> $url/recon/subdomains/crt.txt
+	curl -s "https://crt.sh/?q=%25.$url&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u > $url/recon/subdomains/crt.txt
+	echo "[+] Querying for subject alternative names on $url"
+	curl -s "https://crt.sh/?q=%25.$url&output=json" | jq -r '.[].name_value' | sort -u >> $url/recon/san.txt
 }
 
 # nmap run function
