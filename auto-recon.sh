@@ -2,7 +2,10 @@
 
 figlet -c -f ansi-shadow -t "Auto-recon.sh" | lolcat
 echo "Finding subdomains, open ports and services and directories of interest"
+
 url=$1
+TODAY=$(date)
+echo "This scan was created on $TODAY"
 
 if [ ! -d "$url" ];then
 	mkdir $url
@@ -15,12 +18,20 @@ fi
 if [ ! -d "$url/recon/subdomains" ];then
         mkdir $url/recon/subdomains
 fi
+
+if [ ! -d "$url/recon/dir_enum" ];then
+        mkdir $url/recon/dir_enum
+fi
 echo "[+] Harvesting subdomains that may be of interest for you..."
 assetfinder $url >> $url/recon/assets.txt
 cat $url/recon/assets.txt | grep $1 >> $url/recon/final.txt
 rm $url/recon/assets.txt
 echo "[+] Querying cert.sh for subdomains..."
 curl -s "https://crt.sh/?q=%25.$url&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u > $url/recon/subdomains/crt.txt
+
+echo "[+] Performing directory enumeration..."
+dirsearch -u $url --output=$url/recon/dir_enum/scan.txt
+
 #echo "[+] Finding more subdomains..."
 #amass enum -d $url >> $url/recon/f.txt
 #sort -u $url/recon/f.txt >> $url/recon/final.txt
