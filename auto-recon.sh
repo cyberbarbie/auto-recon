@@ -146,8 +146,6 @@ read -p "Target: " url
 
 # Creating target directory
 
-figlet -c -f ansi-shadow -t "Auto-recon.sh" | lolcat
-echo "Finding subdomains, open ports and services and directories of interest"
 
 url=$1
 TODAY=$(date)
