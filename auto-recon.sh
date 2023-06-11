@@ -15,6 +15,7 @@ fi
 if [ ! -d "$url/recon/subdomains" ];then
         mkdir $url/recon/subdomains
 fi
+
 echo "[+] Harvesting subdomains that may be of interest for you..."
 assetfinder $url >> $url/recon/assets.txt
 cat $url/recon/assets.txt | grep $1 >> $url/recon/final.txt
