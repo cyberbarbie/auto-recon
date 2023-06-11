@@ -22,6 +22,7 @@ fi
 if [ ! -d "$url/recon/dir_enum" ];then
         mkdir $url/recon/dir_enum
 fi
+
 echo "[+] Harvesting subdomains that may be of interest for you..."
 assetfinder $url >> $url/recon/assets.txt
 cat $url/recon/assets.txt | grep $1 >> $url/recon/final.txt
@@ -30,7 +31,7 @@ echo "[+] Querying cert.sh for subdomains..."
 curl -s "https://crt.sh/?q=%25.$url&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u > $url/recon/subdomains/crt.txt
 
 echo "[+] Performing directory enumeration..."
-dirsearch -u $url --output=$url/recon/dir_enum/scan.txt
+gobuster dir -u $url -k -r -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt  > $url/recon/dir_enum/scan.txt
 
 #echo "[+] Finding more subdomains..."
 #amass enum -d $url >> $url/recon/f.txt
