@@ -182,7 +182,7 @@ echo "[+] Querying cert.sh for subdomains..."
 curl -s "https://crt.sh/?q=%25.$url&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | sort -u > $url/recon/subdomains/crt.txt
 
 echo "[+] Performing directory enumeration..."
-gobuster dir -u $url -k -r -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt  > $url/recon/dir_enum/scan.txt
+#gobuster dir -u $url -k -r -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt  > $url/recon/dir_enum/scan.txt 
 
 #echo "[+] Finding more subdomains..."
 #amass enum -d $url >> $url/recon/f.txt
